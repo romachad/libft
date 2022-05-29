@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/28 23:42:17 by romachad          #+#    #+#             */
-/*   Updated: 2022/05/29 06:56:51 by romachad         ###   ########.fr       */
+/*   Created: 2022/05/29 07:52:30 by romachad          #+#    #+#             */
+/*   Updated: 2022/05/29 08:21:37 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
-	char	*change;
+	char	*dest2;
+	char	*temp;
 
-	change = (char *) s;
+	//Maybe use calloc to allocate size in memory for the temp?
+	ft_memcpy(temp, src, n);
+	//Yes this is incomplete, temp is not pointing at anything
+	dest2 = (char *) dest;
 	i = 0;
 	while (i < n)
 	{
-		change[i] = c;
+		dest2[i] = temp[i];
 		i++;
 	}
-	return (s);
+	return (dest);
 }
