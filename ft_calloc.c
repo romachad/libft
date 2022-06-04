@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 07:52:30 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/03 04:31:52 by romachad         ###   ########.fr       */
+/*   Created: 2022/06/02 03:45:20 by romachad          #+#    #+#             */
+/*   Updated: 2022/06/03 05:59:07 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*dest_original;
-	char	*swap;
-	size_t	diff;
+	void	*mem;
 
-	if ((src + n) > dest && src < dest)
-	{
-		dest_original = dest;
-		diff = (dest - src);
-		dest = (char *) src + n - 1 + diff;
-		while (n > 0)
-		{
-			swap = (char *) dest - diff;
-			ft_memset(dest, swap[0], 1);
-			dest--;
-			n--;
-		}
-	}
+	if (nmemb == 0 || size == 0)
+		return (0);
+//	else if ((nmemb * size) > 2147483647)
+//		return (0);
 	else
-		return (ft_memcpy(dest, src, n));
-	return (dest_original);
+	{
+		mem = malloc(nmemb * size);
+		//ft_bzero(mem, (nmemb * size));
+		ft_memset(mem, '\0', (nmemb *size));
+		return (mem);
+	}
+	return (0);
 }

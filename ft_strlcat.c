@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 07:52:30 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/03 04:31:52 by romachad         ###   ########.fr       */
+/*   Created: 2022/05/29 18:35:44 by romachad          #+#    #+#             */
+/*   Updated: 2022/06/04 09:15:35 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	void	*dest_original;
-	char	*swap;
-	size_t	diff;
+	size_t	size_d;
+	size_t	size_s;
+	size_t	i;
 
-	if ((src + n) > dest && src < dest)
+	size_d = ft_strlen(dest);
+	size_s = ft_strlen(src);
+	if (size < size_d)
+		return (size_s + size);
+	i = 0;
+	while (((size_d + i) < (size - 1)) && src[i] != 0)
 	{
-		dest_original = dest;
-		diff = (dest - src);
-		dest = (char *) src + n - 1 + diff;
-		while (n > 0)
-		{
-			swap = (char *) dest - diff;
-			ft_memset(dest, swap[0], 1);
-			dest--;
-			n--;
-		}
+		dest[size_d + i] = src[i];
+		i++;
 	}
+	dest[size_d + i] = 0;
+	if (dest <= src && (dest + size) >= src)
+		return (size_d + size_s + i);
 	else
-		return (ft_memcpy(dest, src, n));
-	return (dest_original);
+		return (size_d + size_s);
 }
