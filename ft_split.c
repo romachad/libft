@@ -5,79 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 04:01:41 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/15 06:50:25 by romachad         ###   ########.fr       */
+/*   Created: 2022/06/19 02:35:00 by romachad          #+#    #+#             */
+/*   Updated: 2022/06/19 05:50:28 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 static size_t	count_char(char const *s, char c)
 {
-	char	*addr;
-	size_t	counter;
+	size_t	i;
+	size_t	count;
 
-	addr = ft_strchr(s, c);
-	if (addr)
-		counter = 1;
-	else
-		return (0);
-	while (addr)
+	i = 0;
+	while (s[i] == c)
+		i++;
+	count = 0;
+	while (s[i] != 0 && i < ft_strlen(s))
 	{
-		addr = ft_strchr(&addr[1], c);
-		if (addr)
-			counter++;
+		while (s[i] == c && s[i + 1] == s[i])
+			i++;
+		if (s[i] == c && s[i + 1] != 0)
+		{
+			count++;
+		}
+		i++;
 	}
-	return (counter);
+	return (count);
 }
 
-static char	**make_array(char const *s, char c, size_t count)
+static void	free_array(char **array, size_t i)
 {
-	char	**array;
-	char	*start_addr;
-	char	*end_addr;
-	size_t	i;
-
-	array = (char **) malloc((count + 1) * sizeof(char *));
-	if (!array)
-		return (0);
-	i = 0;
-	start_addr = (char *) s;
-	while (i <= count)
+	while (i > 0)
 	{
-		end_addr = ft_strchr(start_addr, c);
-		if (end_addr)
-			array[i] = ft_substr(start_addr, 0, (end_addr - start_addr) + 1);
-		else
-			array[i] = ft_substr(start_addr, 0, (ft_strlen(start_addr)));
-		start_addr = end_addr + 1;
-		i++;
+		free(array[i]);
+		i--;
+	}
+	free(array[i]);
+	free(array);
+}
+
+char	**make_array(char **array, size_t count, const char *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	size;
+
+	i = 0;
+	j = 0;
+	size = 0;
+	while (s[i] != 0 && i < ft_strlen(s) && j < count + 1)
+	{
+		while (s[i] == c && s[i] != 0)
+			i++;
+		while (s[i] != c && s[i] != 0)
+		{
+			size++;
+			i++;
+		}
+		array[j] = ft_substr(&s[i - size], 0, size);
+		if (array[j] == 0)
+			free_array(array, j);
+		size = 0;
+		j++;
 	}
 	return (array);
 }
 
-/*Need to implement some sanity check,
- *  to free in case there were errors of allocation...*/
 char	**ft_split(char const *s, char c)
 {
-	size_t	len;
 	size_t	count;
 	char	**array;
 
-	len = ft_strlen(s);
-	if (!len || c == 0)
+	if (s[0] == 0 || c == 0)
 		return (0);
 	count = count_char(s, c);
-	if (count == 0)
-	{
-		array = (char **) malloc((1) * sizeof(char *));
-		if (!array)
-			return (0);
-		array[0] = ft_strdup(s);
-		return (array);
-	}
+	array = (char **) malloc((count + 1) * sizeof(char *));
+	if (!array)
+		return (0);
 	else
-	{
-		array = make_array(s, c, count);
-		return (array);
-	}
+		return (make_array(array, count, s, c));
 }
