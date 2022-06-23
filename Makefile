@@ -1,3 +1,4 @@
+NAME := libft.a
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
 LIB_SRC := ft_strdup.c ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_memset.c \
@@ -6,7 +7,7 @@ LIB_SRC := ft_strdup.c ft_strlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isa
 	ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 OBJ := $(shell echo $(LIB_SRC)|sed 's/\.c/\.o/g')
 
-all: libft.a
+all: $(NAME)
 
 libft.a: $(OBJ)
 	ar -crs $@ $^
@@ -15,9 +16,11 @@ $(OBJ): %.o: $(LIB_SRC)
 	$(CC) -c $^ $(CFLAGS)
 
 fclean: clean
-	rm -f libft.a
+	rm -f $(NAME)
 
 clean:
 	rm -f $(OBJ)
 
 re: fclean all
+
+.PHONY: all clean fclean re
