@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 02:35:00 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/22 08:11:58 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:15:35 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -43,7 +43,7 @@ static void	*free_array(char **array, size_t i)
 	return (0);
 }
 
-char	**make_array(char **array, size_t count, const char *s, char c)
+static char	**make_array(char **array, size_t count, const char *s, char c)
 {
 	size_t	i;
 	size_t	j;
