@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 06:00:38 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/20 04:13:21 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 02:39:12 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *src)
 	int		size;
 	int		i;
 
+	if (!src)
+		return (NULL);
 	size = ft_strlen(src);
 	new_str = malloc((size + 1) * sizeof(char));
 	if (!new_str)

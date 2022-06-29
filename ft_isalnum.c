@@ -6,14 +6,14 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 21:44:57 by romachad          #+#    #+#             */
-/*   Updated: 2022/05/28 23:39:17 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 02:09:28 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isalnum(int c)
 {
-	if (c >= '0' && c <= '9')
+	if (ft_isdigit(c))
 		return (3);
 	else if (c >= 'A' && c <= 'Z')
 		return (1);

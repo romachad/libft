@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 21:15:48 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/22 04:56:21 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 03:07:21 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,6 +16,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	full_size;
 	size_t	i;
 
+	if (!s1 || !set)
+		return (NULL);
 	full_size = ft_strlen(s1);
 	if (!full_size)
 		return (ft_calloc(1, sizeof(char)));

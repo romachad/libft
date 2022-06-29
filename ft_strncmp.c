@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 00:04:05 by romachad          #+#    #+#             */
-/*   Updated: 2022/05/30 00:31:00 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 03:03:09 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,6 +15,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
+	if (!s1 || !s2)
+		return (0);
 	i = 0;
 	while (i < n && (s1[i] != 0 || s2[i] != 0))
 	{

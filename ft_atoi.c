@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 06:05:29 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/02 03:37:52 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 03:05:10 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -61,6 +61,8 @@ int	ft_atoi(const char *nptr)
 	int				signal;
 	char			*new_addr;
 
+	if (!nptr)
+		return (0);
 	new_addr = skip_spaces(nptr);
 	signal = check_signal_number(new_addr[0]);
 	if (!signal)

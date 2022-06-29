@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 02:35:00 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/25 18:15:35 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 03:33:47 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -75,6 +75,8 @@ char	**ft_split(char const *s, char c)
 	size_t	count;
 	char	**array;
 
+	if (!s)
+		return (ft_calloc(1, sizeof(char)));
 	if (s == 0 || !ft_isascii(c))
 		return (0);
 	count = count_char(s, c);

@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 23:45:15 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/20 03:20:12 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 03:04:41 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,6 +16,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
+	if (!big || !little)
+		return (NULL);
 	if (!(ft_strlen(little)))
 		return ((char *) big);
 	i = 0;
