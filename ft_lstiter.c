@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 07:52:35 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/29 08:01:44 by romachad         ###   ########.fr       */
+/*   Updated: 2022/06/29 08:14:09 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -18,7 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	if (!lst)
 		return ;
 	temp = lst;
-	while(temp)
+	while (temp)
 	{
 		f(temp->content);
 		temp = temp->next;
