@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 02:35:00 by romachad          #+#    #+#             */
-/*   Updated: 2022/06/29 03:33:47 by romachad         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:02:47 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -17,10 +17,10 @@ static size_t	count_char(char const *s, char c)
 	size_t	count;
 
 	i = 0;
-	while (s[i] == c && *s)
+	while (s[i] == c && s[i])
 		i++;
 	count = 0;
-	while (s[i] != 0 && i < ft_strlen(s))
+	while (s[i] != 0)
 	{
 		count++;
 		while (s[i] && s[i] != c)
@@ -52,7 +52,7 @@ static char	**make_array(char **array, size_t count, const char *s, char c)
 	i = 0;
 	j = 0;
 	size = 0;
-	while (s[i] != 0 && i < ft_strlen(s) && j < count)
+	while (s[i] && j < count)
 	{
 		while (s[i] == c && s[i] != 0)
 			i++;
