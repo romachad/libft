@@ -6,7 +6,7 @@
 /*   By: romachad <romachad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 02:35:00 by romachad          #+#    #+#             */
-/*   Updated: 2022/07/02 20:02:47 by romachad         ###   ########.fr       */
+/*   Updated: 2022/07/09 20:27:18 by romachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -84,8 +84,7 @@ char	**ft_split(char const *s, char c)
 		array = (char **) malloc((count + 1) * sizeof(char *));
 	else
 	{
-		array = (char **) malloc(1 * sizeof(char *));
-		array[0] = 0;
+		array = (char **) ft_calloc(1, sizeof(char *));
 		return (array);
 	}
 	if (!array)
